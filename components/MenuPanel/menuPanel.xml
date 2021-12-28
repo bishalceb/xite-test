@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="MenuPanel" extends="Group">
+
+    <interface>
+        <field id="menuOptionSelected" type="integer" alwaysNotify="true"/>
+        <field id="backPressed" type="boolean" alwaysNotify="true"/>
+        <field id="visible" type="boolean" alwaysNotify="true"/>
+        <field id="hasFocus" type="boolean" alwaysNotify="true"/>
+        <field id="loadMenuData" type="boolean" alwaysNotify="true"/>
+        <field id="focusedMenu" type="integer" alwaysNotify="true"/>
+        <field id="selectedMenu" type="integer" alwaysNotify="true"/>
+        <field id="wrapMenu" type="boolean" alwaysNotify="true"/>
+        <field id="topScreen" type="String" alwaysNotify="true"/>
+
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/MenuPanel/menuPanel.brs" />
+  <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <children>
+
+        <Rectangle
+            id="menuListRectBase"
+            color="#000000"
+            opacity="0.98">
+
+
+            <MarkupList
+                id="menuList"
+                itemComponentName="menuMarkupItemTemplate"
+                drawFocusFeedback = "false"
+                itemSpacing = "[20, 20]"
+                numRows="12"
+                vertFocusAnimationStyle="floatingFocus"
+                inheritParentOpacity="false"/>
+
+        </Rectangle>
+
+    </children>
+</component>

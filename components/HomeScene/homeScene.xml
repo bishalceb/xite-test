@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="HomeScene" extends="Scene">
+    <script type="text/brightscript" uri="pkg:/components/HomeScene/homeScene.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
+    <children>
+        <poster id="bgImage" loadDisplayMode="scaleToFit" loadSync="true" loadWidth="1920" loadHeight="1080">
+          <HomeScreenComponent id="homeScreenComponent" visible="false"/>
+          <PlayerPage id="playerPage" visible="false"/>
+        </poster>
+    </children>
+    <interface>
+        <field id="isExitFromApp" type="Boolean" alwaysNotify="true" value="false"/>
+        <field id="showHome" type="Boolean" alwaysNotify="true" value="false"/>
+        <field id="showPlayerFromHome" type="Boolean" alwaysNotify="true" alias="homeScreenComponent.showPlayer" onChange="showPlayerScreenComponent" value="false"/>        
+        <field id="showHomeScreenFromPlayer" type="boolean" alwaysNotify="true" alias="playerPage.showHome" onChange="showHomeScreenComponent" value="false"/>
+    </interface>
+</component>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ItemTemplateRowList" extends="Group">
+  <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+  <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+  <script type="text/brightscript" >
+    <![CDATA[
+      sub init()
+        m.eventPoster = m.top.findNode("eventPoster")
+        m.eventTitle = m.top.findNode("eventTitle")
+
+        m.eventPoster.observeField("loadStatus","handleImageLoadingStatus")
+      end sub
+
+      function itemChange()
+        itemContent = m.top.itemContent
+        m.eventPoster.uri = itemContent.posterUrl
+        m.eventTitle.text  = itemContent.title
+        m.eventTitle.font = Hind_Regular(25)
+      end function
+
+      function onWidthUpdate()
+          m.eventPoster.width = m.top.width
+          m.eventPoster.loadWidth = m.top.width
+          m.eventTitle.maxWidth = m.top.width
+
+
+      end function
+
+      function onHeightUpdate()
+          m.eventPoster.height = m.top.height
+          m.eventPoster.loadHeight = m.top.height
+          m.eventTitle.height = m.top.height*0.10
+          m.eventTitle.translation = [0,m.top.height+10]
+      end function
+
+
+    ]]>
+  </script>
+  <interface>
+      <field id="itemContent" type="node" onChange="itemChange"/>
+      <field id="width" type="float" onChange="onWidthUpdate"/>
+      <field id="height" type="float" onChange="onHeightUpdate"/>
+  </interface>
+  <children>
+      <poster id="eventPoster" loadDisplayMode="scaleToFit" loadSync="true" translation="[0,0]" 
+       failedBitmapUri="pkg://locale/default/images/mm_icon_focus_fhd.png"
+       loadingBitmapUri="pkg://locale/default/images/mm_icon_focus_fhd.png"/>
+      <ScrollingLabel id="eventTitle" scrollSpeed="50" horizAlign="left" color="#FFFFFFFF"/>
+  </children>
+</component>
