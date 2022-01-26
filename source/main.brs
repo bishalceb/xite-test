@@ -14,7 +14,6 @@ sub main(args as dynamic)
   scene.signalBeacon("AppLaunchComplete")
   screen.show()
   scene.observeField("isExitFromApp", port)
-  
   while true
       msg = wait(0, port)
       if type(msg) = "roSGScreenEvent" and msg.isScreenClosed()
