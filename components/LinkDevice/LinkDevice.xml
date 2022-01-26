@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LinkDevice" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+
+	<script type="text/brightscript" uri="pkg:/components/LinkDevice/LinkDevice.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+
+     <interface>
+      <field id="chekLoginStatus" type="assocArray" alwaysNotify="true"/>
+       <field id="unlink" type="assocArray" alwaysNotify="true"/>
+      <field id="code" type="string" alwaysNotify="true"/>
+        <field id="showdashboard" type="boolean" alwaysNotify="true"/>
+    </interface>
+
+	<children>
+        <Timer id="loginStatusTimer" repeat="true" duration="5" />	
+		<Rectangle id="bg_color" color="#1A1A27" width="1920" height="1080"/>
+		<poster id="topImage" width="240" height="150" translation="[60,20]"/>
+		<Label id="sign_in_title" color="#ffffff" width="1920" text="Link Device" horizAlign="center" vertAlign="center" translation="[0,239]" /> 
+
+		<!--Right hand side design-->
+        <Label id="link_signin_title" wrap="true" color="#ffffff" width="1920"  horizAlign="center" vertAlign="center"
+		text="Or Sign In from your computer or mobile device" translation="[0,420]"/>
+		
+		<Label id="visitlink_signin_title" wrap="true" color="#ffffff" width="1920"  horizAlign="center" vertAlign="center"
+		text="Please visit  https://www.americonic.com/roku" translation="[0,470]"/>
+		
+		<Label id="enter_code_title" wrap="true" color="#ffffff" width="1920"  horizAlign="center" vertAlign="center"
+         text="Enter the following code:" translation="[0,566]"/> 
+
+		 <LayoutGroup id="code_group" layoutDirection="horiz" itemSpacings="[10]" translation="[650,630]">
+            <Rectangle id="code_rect_1" color="#1E1E2D" width="91" height="111">
+                <Label id="code_text1" horizAlign="center" vertAlign="center"  color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+            <Rectangle id="code_rect_2" color="#1E1E2D" width="91" height="111">
+                <Label id="code_text2" horizAlign="center" vertAlign="center" color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+            <Rectangle id="code_rect_3" color="#1E1E2D" width="91" height="111" >
+                <Label id="code_text3" horizAlign="center" vertAlign="center" color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+            <Rectangle id="code_rect_4" color="#1E1E2D" width="91" height="111">
+                <Label id="code_text4" horizAlign="center" vertAlign="center" color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+            <Rectangle id="code_rect_5" color="#1E1E2D" width="91" height="111">
+                <Label id="code_text5" horizAlign="center" vertAlign="center" color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+            <Rectangle id="code_rect_6" color="#1E1E2D" width="91" height="111">
+                <Label id="code_text6" horizAlign="center" vertAlign="center" color="#ffffff" width="91" height="111"/>
+            </Rectangle>
+        </LayoutGroup>
+        <ToastComponent id="toastComponent" visible="false"/>
+		
+	</children>
+</component>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="MyAccount" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type="text/brightscript" uri="pkg:/components/MyAccount/MyAccount.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+    <interface>
+		<field id="focusedContent" type="node" />
+		<field id="contentNode" type="roArray" alwaysNotify="true" />
+		<field id="searchResponse" type="assocArray" alwaysNotify="true"/>
+		<field id="channelClick" type="string" alwaysNotify="true"/>
+		<field id="unlinkResponse" type="assocArray" alwaysNotify="true"/>
+		<field id="showtvchannel" type="boolean" alwaysNotify="true"/>
+        <field id="showdashboard" type="boolean" alwaysNotify="true"/>
+	</interface>
+
+	<children>
+	<Rectangle id="bgRect" width="600" height="1080" color="#1A1A27">
+	<Rectangle color="#1E1E2D" width="1920" height="130"/>
+	   <poster id="imgLogo" uri="pkg:/locale/default/images/logo.png" width="240" height="150" translation="[100,7]"/>
+		<MarkupGrid id="menulist" />
+     </Rectangle>	
+	 <Rectangle width="1920" height="100" color="#2B2B40" translation="[0,130]">
+	 	<label id="Dasboardtext" color="#ffffff"  text="My Account" translation="[100,20]"/> 
+		 <Rectangle width="2" height="40" color="#1A1A27" translation="[310,30]"/>
+		<label id="hometext" color="#565674"  text="Home  -" translation="[330,25]"/> 
+		<label id="dashsmall" color="#ffffff"  text="Account" translation="[440,25]"/> 
+	 </Rectangle>
+    <Rectangle width="980" height="400" color="#2B2B40" translation="[430,300]">  
+        <label id="membershiptext" color="#ffffff"  text="Membership Status" translation="[40,35]"/> 
+        <Rectangle width="980" height="2" color="#1A1A27" translation="[0,110]"/>
+		<!-- <label id="userNameText" color="#ffffff"  text="Name:" translation="[40,150]"/> 
+        <label id="userValue" color="#ffffff"   translation="[350,150]"/>  -->
+        <label id="statusText" color="#ffffff"  text="status:" translation="[40,170]"/> 
+        <label id="statusValue" color="#ffffff"  text="Your Purchase AmericonicTv:Lifetime" translation="[350,170]"/> 
+        <label id="memberstarttext" color="#ffffff"  text="Membership Start:" translation="[40,250]"/> 
+    </Rectangle>   
+     <ToastComponent id="toastComponent" visible="false"/>
+	<label id="boundingSize" color="#ffffff"  height="1080" visible="false" translation="[650,640]"/> 
+
+	</children>
+
+</component>

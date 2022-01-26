@@ -1,45 +1,121 @@
-function HomeApi(path)
-    params={}
-    requestHandlerObject = getServerObject1()
-    urlPath=path
+function videosApi()
+    url="videos/get?app=2&device="+m.global.channelUniqueId
+    requestHandlerObject = getServerObject()
     objectParam  = {
-                "uri"           : urlPath,
-                "requestType"   : "GET",
+    "uri"           : url,
+    "requestType"   : "GET",
+    "authKey":"756280add7308032d4c7f6313fb3482a",
+    "token":m.global.token
     }
     startTaskNode(requestHandlerObject,objectParam)
-    requestHandlerObject.ObserveField("content","getNewHomeApiCallback")
+    requestHandlerObject.observeField("content","getVideoAPiCallBack")
+
 end function
 
-function getNewHomeApiCallback(response as object)
-    taskNode = response.getRoSGNode()
-    if taskNode <> invalid then
-        responseCode  = taskNode.responseCode
-        if responseCode = 200 then
-          homeJson = ParseJson(taskNode.content)
-          ? "home json=="homeJson
-          m.top.contentNode=homeJson
-        else if responseCode > 400 then
-            resJson = parseJson(taskNode.content)
-            if resJson <> invalid then
-                if resJson.message <> invalid then
-                    message = resJson.message
-                end if
-            else
-                message = taskNode.reason
-            end if
-            showErrorDialog("Network Error",message)
-        else if responseCode < 0 then
-              resJson = parseJson(taskNode.content)
-              ? "resJson "resJson
-              if resJson <> invalid then
-                  if resJson.errormessage <> invalid then
-                      message = resJson.errormessage
-                  end if
-              end if
-              showErrorDialog("Network Error",message)
-        end if
-    end if
+function getVideoAPiCallBack(event as object)
+  response = ParseJson(event.getData())
+  m.top.videoJson=response
 end function
 
 
+function categoryApi()
+  url="categories/get?app=2&device="+m.global.channelUniqueId
+  requestHandlerObject = getServerObject()
+  objectParam  = {
+  "uri"           : url,
+  "requestType"   : "GET",
+  "authKey":"756280add7308032d4c7f6313fb3482a"
+  "token":m.global.token
+  }
+  startTaskNode(requestHandlerObject,objectParam)
+  requestHandlerObject.observeField("content","getCategoryApiCallBack")
+
+end function
+
+function getCategoryApiCallBack(event as object)
+  response = ParseJson(event.getData())
+  m.top.categoryJson=response
+end function
+
+function genrateCode()
+  url="device/code?app=2&device="+m.global.channelUniqueId
+  requestHandlerObject = getServerObject()
+  objectParam  = {
+  "uri"           : url,
+  "requestType"   : "POST",
+  "authKey":"756280add7308032d4c7f6313fb3482a"
+  }
+  startTaskNode(requestHandlerObject,objectParam)
+  requestHandlerObject.observeField("content","getgenrateCodeApiCallBack")
+
+end function
+
+function getgenrateCodeApiCallBack(event as object)
+  response = ParseJson(event.getData())
+  if response <> invalid and response.status="success"
+    m.top.code=response.code 
+  else
+    m.top.unlink=response 
+  end if
+end function
+
+function checkLoginStatus()
+  url="device/accept?app=2&device="+m.global.channelUniqueId
+  requestHandlerObject = getServerObject()
+  objectParam  = {
+  "uri"           : url,
+  "requestType"   : "POST",
+  "authKey":"756280add7308032d4c7f6313fb3482a"
+  }
+  startTaskNode(requestHandlerObject,objectParam)
+  requestHandlerObject.observeField("content","getcheckLoginStatusCallBack")
+
+end function
+
+function getcheckLoginStatusCallBack(event as object)
+  response = ParseJson(event.getData())
+  m.top.chekLoginStatus=response
+end function
+
+function calluserApi()
+  ?"m.global.token"m.global.token
+  url="user/info?app=2&device="+m.global.channelUniqueId
+    requestHandlerObject = getServerObject()
+    objectParam  = {
+    "uri"           : url,
+    "requestType"   : "POST",
+    "authKey":"756280add7308032d4c7f6313fb3482a",
+    "token":m.global.token
+    }
+  startTaskNode(requestHandlerObject,objectParam)
+  requestHandlerObject.observeField("content","getuserApiCallBack")
+
+end function
+
+function getuserApiCallBack(event as object)
+  response = ParseJson(event.getData())
+  ?"response"response
+  m.top.userApi=response
+end function
+
+
+function unLinkDevice()
+  ?"m.global.token"m.global.token
+  url="unlink?app=2&device="+m.global.channelUniqueId
+    requestHandlerObject = getServerObject()
+    objectParam  = {
+    "uri"           : url,
+    "requestType"   : "POST",
+    "authKey":"756280add7308032d4c7f6313fb3482a",
+    "token":m.global.token
+    }
+  startTaskNode(requestHandlerObject,objectParam)
+  requestHandlerObject.observeField("content","unLinkDeviceCallBack")
+end function
+
+function unLinkDeviceCallBack(event as object)
+  response = ParseJson(event.getData())
+  ?"unlink device"response
+    m.top.unlinkResponse=response
+end function
 

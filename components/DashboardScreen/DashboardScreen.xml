@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="DashboardScreen" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type="text/brightscript" uri="pkg:/components/DashboardScreen/DashboardScreen.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+    <interface>
+		<field id="focusedContent" type="node" />
+		<field id="isExitApp" type="boolean" alwaysNotify="true"/>
+		<field id="contentNode" type="roArray" alwaysNotify="true" />
+		<field id="userApi" type="assocArray" alwaysNotify="true"/>
+		<field id="unlinkResponse" type="assocArray" alwaysNotify="true"/>
+		<field id="channelClick" type="string" alwaysNotify="true"/>
+		<field id="showtvchannel" type="boolean" alwaysNotify="true"/>
+		<field id="showAcc" type="boolean" alwaysNotify="true"/>
+		<field id="showLinkDevice" type="boolean" alwaysNotify="true"/>
+	</interface>
+
+	<children>
+	<Rectangle id="bgRect" width="600" height="1080" color="#1A1A27">
+	<Rectangle color="#1E1E2D" width="1920" height="130"/>
+	   <poster id="imgLogo" uri="pkg:/locale/default/images/logo.png" width="240" height="150" translation="[100,7]"/>
+		<MarkupGrid id="menulist" />
+     </Rectangle>	
+	 <Rectangle width="1920" height="100" color="#2B2B40" translation="[0,130]">
+	 	<label id="Dasboardtext" color="#ffffff"  text="Dashboard" translation="[100,20]"/> 
+		 <Rectangle width="2" height="40" color="#1A1A27" translation="[300,30]"/>
+		<label id="hometext" color="#565674"  text="Home  -" translation="[320,25]"/> 
+		<label id="dashsmall" color="#ffffff"  text="Dashboard" translation="[430,25]"/> 
+	 </Rectangle>	
+	 <Rectangle id="linkdeviceRect" width="1240" height="80" color="#2B2B40" translation="[100,240]">
+	 	<label id="linktext" color="#ffffff"  text="The device is not linked to your AMERiconic account." translation="[20,20]"/> 
+	 	<poster id="linkbtn" uri="pkg:/locale/default/images/Bg-white.png" BlendColor="#1b1b29" width="200" height="50" translation="[1000,15]">
+            <Label id="linkbtntext" color="#ffffff" text="Link device"  width="200" height="50" horizAlign="center" vertAlign="center"/>
+        </poster>
+	 </Rectangle>
+	 <MarkupGrid id="channellist" />
+     <ToastComponent id="toastComponent" visible="false"/>
+	<label id="boundingSize" color="#ffffff"  height="1080" visible="false" translation="[650,640]"/> 
+
+	</children>
+
+</component>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ItemTemplateMenu" extends="Group" >
+
+    <interface>
+      <field id="itemContent" type="node"/>
+      <field id="itemHasFocus" type="boolean"/>
+      <field id="width" type="float"/>
+      <field id="height" type="float"/>
+      <field id="showTitle" type="Boolean" alwaysNotify="true"/>      
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/DashboardScreen/itemTemplateMenu.brs" />	
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+    <children>
+        <Label id="title" color="#92929F" vertAlign="center" horizAlign = "left"/>
+    </children>
+</component>

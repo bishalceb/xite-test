@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="ItemTemplateRowList" extends="Group">
+  <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+  <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+  <script type="text/brightscript" >
+    <![CDATA[
+      sub init()
+        m.eventPoster = m.top.findNode("eventPoster")
+        m.eventTitle = m.top.findNode("eventTitle")
+        m.total_progress = m.top.findNode("total_progress")
+        m.watch_progress = m.top.findNode("watch_progress")
+        m.total_progress.visible=false
+        m.watch_progress.visible=false
+        'm.total_progress.uri=baseImageUrl()+"watchProgress.9.png"
+        'm.watch_progress.uri=baseImageUrl()+"focus_btn.9.png"
+        m.eventPoster.observeField("loadStatus","handleImageLoadingStatus")
+      end sub
+
+      function itemChange()
+        itemContent = m.top.itemContent
+        m.eventPoster.uri = itemContent.posterUrl
+        m.eventTitle.text  = itemContent.title
+        m.eventTitle.font = Hind_Regular(28)  
+        if itemContent.showProgress <> invalid and itemContent.showProgress and itemContent.duration <> invalid 
+        '?"itemContent.watchedDuration"itemContent.watchedDuration;itemContent.duration;itemContent.title
+            if itemContent.watchedDuration >itemContent.duration
+              progressPercentage=1
+            else if itemContent.duration <> 0
+              progressPercentage=itemContent.watchedDuration/itemContent.duration
+            else
+              progressPercentage=1
+            end if
+            m.watch_progress.width = m.top.width*progressPercentage
+            m.total_progress.visible=true
+            m.watch_progress.visible=true
+        else
+          m.total_progress.visible=false
+          m.watch_progress.visible=false
+        end if
+      end function
+
+      function onWidthUpdate()
+          m.eventPoster.width = m.top.width
+          m.eventPoster.loadWidth = m.top.width
+          m.eventTitle.width = m.top.width
+          m.total_progress.width = m.top.width
+      end function
+
+      function onHeightUpdate()
+          m.eventPoster.height = m.top.height
+          m.eventPoster.loadHeight = m.top.height
+          m.eventTitle.height = m.top.height*0.10
+          m.eventTitle.translation = [0,m.top.height-45]
+          m.total_progress.translation = [0,m.top.height-10]
+          m.watch_progress.translation = [0,m.top.height-10]
+      end function
+
+
+    ]]>
+  </script>
+  <interface>
+      <field id="itemContent" type="node" onChange="itemChange"/>
+      <field id="width" type="float" onChange="onWidthUpdate"/>
+      <field id="height" type="float" onChange="onHeightUpdate"/>
+  </interface>
+  <children>
+      <poster id="eventPoster" loadDisplayMode="scaleToFill" loadSync="true" translation="[0,0]" 
+       failedBitmapUri="pkg://locale/default/images/loading_img.png"/>
+      <Label id="eventTitle" horizAlign="center" color="#ffffff"/>
+      <!-- <poster id="total_progress"  height="10"/>
+      <poster id="watch_progress" height="10"/> -->
+      <Rectangle id="total_progress" height="10" opacity="0.9" color="#000000" visible="false"/>
+      <Rectangle id="watch_progress" height="10" color="#41c2cf" visible="false"/>
+  </children>
+</component>

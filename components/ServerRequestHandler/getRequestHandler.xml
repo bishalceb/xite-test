@@ -6,9 +6,14 @@
 		<field id="uri" type="uri" alwaysNotify="true" />
 		<field id="contentType" type="string" value="json" alwaysNotify="true" />
 		<field id="content" type="string" value="" alwaysNotify="true" />
-		<field id="Authorization" type="string" value="" alwaysNotify="true" />
+		<field id="typeOfApi" type="string" value="" alwaysNotify="true" />
+		<field id="payment" type="string" value="" alwaysNotify="true" />
 		<field id="requestType" type="string" value="Get" alwaysNotify="true"/>
+		<field id="authKey" type="string" value="" alwaysNotify="true" />
+		<field id="token" type="string" value="" alwaysNotify="true" />
+		<field id="deviceId" type="string" value="" alwaysNotify="true" />
 		<field id="param" type="string" value ="" alwaysNotify="true"/>
+		<field id="header" type="assocArray" value="{}" alwaysNotify="true" />
 		<field id="responseCode" type="integer" value ="" alwaysNotify="true"/>
 		<field id="reason" type="string" value ="Network Error" alwaysNotify="true"/>
 	</interface>

@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component name="PlayerPage" extends="Group" initialFocus = "VideoPlayer">
+<component name="PlayerPage" extends="Group">
 
 	<script type="text/brightscript" uri="pkg:/components/PlayerPage/PlayerPage.brs" />
 	<interface>
-     <field id="showHome" type="Boolean" alwaysNotify="true"/>
-     <field id="url" type="String" alwaysNotify="true"/>
+     <field id="showtvchannel" type="boolean" alwaysNotify="true"/>
+	 <field id="showdashboard" type="boolean" alwaysNotify="true"/>
 	</interface>
 	<children>
-			<Rectangle id="playerBase" color="#000000" inheritParentOpacity="false">
-		     <Video
-		        id="VideoPlayer"
-		        visible="false"
-		        translation="[0, 0]"
-		         />
-				</Rectangle>
-  </children>
+		<Video id="VideoPlayer" translation="[0,0]" />
+    </children>
 </component>

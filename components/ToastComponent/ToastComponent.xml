@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ToastComponent" extends = "Group">
+
+	<interface>
+		<field id="message" type="string" />
+		<field id="dismissed" type="boolean" alwaysNotify="true"/>
+	</interface>
+
+	<script type="text/brightscript" uri="pkg:/components/ToastComponent/ToastComponent.brs" />
+	<script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+	<script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+  <children>
+
+		<Rectangle
+		    id="ComponentBase"
+				visible="false"
+				color="#1E1E1E"
+				opacity="0.09">
+				<Label
+					id="Message"
+					inheritParentOpacity="false"
+					horizAlign="center"
+					vertAlign="center"
+					color="#ffc000"
+					/>
+		</Rectangle>
+
+		<Timer
+        id="CountdownTimer"
+        duration="2"
+        repeat="false"/>
+
+    </children>
+</component>

@@ -5,32 +5,16 @@ end sub
 
 Sub onVisibleChange(event as object)
     isVisible = event.getdata()
-    ?"isVisible   ==";m.top.visible
     if m.top.visible then
+      ?"m.global.url"m.global.url
       ContentNode = CreateObject("roSGNode", "ContentNode")
-     ContentNode.url = m.global.url
-     ContentNode.streamFormat = m.global.streamFormat
+    ContentNode.url = m.global.url
+    ContentNode.streamFormat = "hls"
      m.videoPlayer.content = ContentNode
      m.videoPlayer.visible = true
      m.videoPlayer.setFocus(true)
      m.videoPlayer.control = "play"
      m.videoPlayer.observeField("state", "OnVideoPlayerStateChange")
-   else if m.global.deeplinking <> invalid  
-     ContentNode = CreateObject("roSGNode", "ContentNode")
-      ?"m.top.url   ==";m.global.url
-     ContentNode.url = m.global.url
-     ContentNode.streamFormat = m.global.streamFormat
-     m.videoPlayer.content = ContentNode
-     m.videoPlayer.visible = true
-     m.videoPlayer.setFocus(true)
-     m.videoPlayer.control = "play"
-     m.videoPlayer.observeField("state", "OnVideoPlayerStateChange")
-  else
-      m.videoPlayer.control = "stop"
-      m.videoPlayer.control = "none"
-      m.videoPlayer.visible = false
-      m.videoPlayer.setFocus(false)
-
   end if
 end Sub
 
@@ -50,7 +34,7 @@ Sub OnVideoPlayerStateChange()
       m.videoPlayer.control = "stop"
       m.videoPlayer.visible = false
       m.videoPlayer.setFocus(false)
-      m.top.showHome=true
+      m.top.showtvchannel=true
   end if
 End Sub
 
@@ -60,24 +44,28 @@ Function OnkeyEvent(key, press) as Boolean
     result = false
     if press
         if key = "back"
+          if m.global.deeplinking =invalid
+            m.top.showtvchannel=true
+          else
+            m.top.showdashboard=true
+          end if  
           m.global.addField("deeplinking", "assocarray", false)
           m.global.deeplinking = invalid
           m.videoPlayer.control = "stop"
           m.videoPlayer.visible = false
           m.videoPlayer.setFocus(false)
-          m.top.showHome=true
           return true
        else if key="OK"
-           return true
+          return true
        else if key="up"
          return true
        else if key="down"
-           return true
-        else if key="left"
-            return true
+          return true
+       else if key="left"
+          return true
         else if key="right"
-        return true
-    end if
+          return true
+        end if
     end if
 
 End Function

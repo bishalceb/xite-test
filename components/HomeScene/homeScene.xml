@@ -5,14 +5,30 @@
     <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
     <children>
         <poster id="bgImage" loadDisplayMode="scaleToFit" loadSync="true" loadWidth="1920" loadHeight="1080">
-          <HomeScreenComponent id="homeScreenComponent" visible="false"/>
+          <DashboardScreen id="dashboardScreen" visible="false"/>
           <PlayerPage id="playerPage" visible="false"/>
+          <TvChannel id="tvChannel" visible="false"/>
+          <MyAccount id="myAccount" visible="false"/>
+          <LinkDevice id="linkDevice" visible="false"/>
         </poster>
     </children>
     <interface>
+        <field id="inputRequest" type="assocarray" alwaysNotify="true"/>
         <field id="isExitFromApp" type="Boolean" alwaysNotify="true" value="false"/>
-        <field id="showHome" type="Boolean" alwaysNotify="true" value="false"/>
-        <field id="showPlayerFromHome" type="Boolean" alwaysNotify="true" alias="homeScreenComponent.showPlayer" onChange="showPlayerScreenComponent" value="false"/>        
-        <field id="showHomeScreenFromPlayer" type="boolean" alwaysNotify="true" alias="playerPage.showHome" onChange="showHomeScreenComponent" value="false"/>
+        <field id="showTvChannelFromDashboard" type="Boolean" alwaysNotify="true" alias="dashboardScreen.showtvchannel" onChange="showTvChannel" value="false"/>        
+        <field id="showDashboardFromTvChannel" type="Boolean" alwaysNotify="true" alias="tvChannel.showdashboard" onChange="showDashoBoard" value="false"/>        
+        <field id="showPlayerFromTvChannel" type="Boolean" alwaysNotify="true" alias="tvChannel.showPlayer" onChange="showPlayerScreenComponent" value="false"/>        
+        <field id="showAccountFromTvChannel" type="Boolean" alwaysNotify="true" alias="tvChannel.showAcc" onChange="showAccountPage" value="false"/>        
+        <field id="showAccountFromDashboard" type="Boolean" alwaysNotify="true" alias="dashboardScreen.showAcc" onChange="showAccountPage" value="false"/>        
+
+        <field id="showTvChannelFromPlayer" type="Boolean" alwaysNotify="true" alias="playerPage.showtvchannel" onChange="showTvChannel" value="false"/>        
+        <field id="showDashboardFromPlayer" type="Boolean" alwaysNotify="true" alias="playerPage.showdashboard" onChange="showDashoBoard" value="false"/>        
+
+        <field id="showTvChannelFromAccount" type="Boolean" alwaysNotify="true" alias="myAccount.showtvchannel" onChange="showTvChannel" value="false"/>        
+        <field id="showDashboardFromAccount" type="Boolean" alwaysNotify="true" alias="myAccount.showdashboard" onChange="showDashoBoard" value="false"/>        
+    
+        <field id="showLinkDeviceFromDashboard" type="Boolean" alwaysNotify="true" alias="dashboardScreen.showLinkDevice" onChange="showLinkDevice" value="false"/>        
+        <field id="showDashboardFromTvLinkDevice" type="Boolean" alwaysNotify="true" alias="linkDevice.showdashboard" onChange="showDashoBoard" value="false"/>        
+
     </interface>
 </component>

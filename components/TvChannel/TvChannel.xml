@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="TvChannel" extends="Group" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type="text/brightscript" uri="pkg:/components/TvChannel/TvChannel.brs" />
+    <script type="text/brightscript" uri="pkg:/source/utills.brs"/>
+    <script type="text/brightscript" uri="pkg:/source/ApiCenter.brs"/>
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+    <interface>
+		<field id="focusedContent" type="node" />
+		<field id="videoJson" type="assocArray" alwaysNotify="true"/>
+        <field id="categoryJson" type="assocArray" alwaysNotify="true"/>
+        <field id="unlinkResponse" type="assocArray" alwaysNotify="true"/>
+        <field id="channelClick" type="string" alwaysNotify="true"/>
+        <field id="showdashboard" type="boolean" alwaysNotify="true"/>
+        <field id="showPlayer" type="boolean" alwaysNotify="true"/>
+        <field id="showAcc" type="boolean" alwaysNotify="true"/>
+	</interface>
+
+	<children>
+	<Rectangle id="bgRect" width="600" height="1080" color="#1A1A27">
+	<Rectangle color="#1E1E2D" width="1920" height="130"/>
+    <Video id="bgvideo" height="1080" width="1920" enableUI="false"/>
+	   <poster id="imgLogo" uri="pkg:/locale/default/images/logo.png" width="240" height="150" translation="[100,7]"/>
+		<MarkupGrid id="menulist" />
+     <poster id="imgLogoMiddel" uri="pkg:/locale/default/images/middleLogo.png"  translation="[680,260]"/>   
+     <RowList id="contenRowtlist" 
+			  numRows="21"
+			  rowItemSpacing="[[25,0]]"
+              itemSpacing="[0,10]"
+              rowSpacings="[40,40,40,20,40,40,40,40,20,40]"
+              showRowLabel="[true,true]"
+              inheritParentOpacity="false"
+              />
+     </Rectangle>	
+     <ToastComponent id="toastComponent" visible="false"/>
+	<label id="boundingSize" color="#ffffff"  height="1080" visible="false" translation="[650,640]"/> 
+
+	</children>
+
+</component>

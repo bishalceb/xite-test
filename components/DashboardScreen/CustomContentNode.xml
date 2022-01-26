@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CustomContentNode" extends="ContentNode">
+  <interface>
+    <field id="title" type="string" />
+    <field id="description" type="string" />
+    <field id="showTitle" type="boolean" />
+    <field id="posterUrl" type="string" />
+    <field id="icon" type="string" />
+    <field id="btntext" type="string" />
+    <field id="url" type="string" />
+  </interface>
+</component>

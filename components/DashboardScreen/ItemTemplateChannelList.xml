@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ItemTemplateChannelList" extends="Group" >
+
+    <interface>
+      <field id="itemContent" type="node"/>
+      <field id="itemHasFocus" type="boolean"/>
+      <field id="width" type="float"/>
+      <field id="height" type="float"/>     
+  </interface>
+  <script type="text/brightscript" uri="pkg:/components/DashboardScreen/ItemTemplateChannelList.brs" />	
+    <script type="text/brightscript" uri="pkg:/locale/default/fonts/fonts.brs"/>
+    <children>
+        <Rectangle color="#1E1E2D"  width="600" height="700">
+            <Label id="title" color="#ffffff" text="Americonic Tv" translation="[40,10]"/>
+            <Label id="desc" wrap="true" maxLines="2" lineSpacing="-2.0" color="#565674"  horizAlign="Left" translation="[40,60]"/>      
+            <poster id="icon"  width="600" height="366" translation="[10,160]"/>
+            <poster id="btn" uri="pkg:/locale/default/images/Bg-white.png" BlendColor="#1b1b29" width="530" height="80" translation="[40,580]">
+                <Label color="#ffffff" id="btntext" text="Launch Americonic Tv"  width="530" height="80" horizAlign="center" vertAlign="center"/>
+            </poster>
+        </Rectangle>
+    </children>
+</component>
